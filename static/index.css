@@ -64,12 +64,6 @@ pre {
 
 
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
 
 .container {
     display: flex;
@@ -142,3 +136,41 @@ pre {
     line-height: 1.5;
     color: #333;
 }
+
+
+/* Add styles for the result-section */
+.result-section {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-section h1 {
+    color: #333;
+}
+
+.result-section p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+
+
+/* Jinja css */
+.result-section {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: 10px;
+}
+
+.result-section h1,
+.result-section p {
+    color: #333;
+
+}
+

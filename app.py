@@ -11,20 +11,22 @@ app = Flask(__name__)
 def main():
     return render_template('index.html')
 
-@app.route('/parse', methods=['POST','GET'])
+@app.route('/parse', methods=['POST'])
 def parse():
-
-    if 'resumeFile' not in request.files:
+    resume_file = None  # Initialize the variable
+    if 'resumeFile' not in request.files or request.files['resumeFile'].filename == '':
         return jsonify({'error': 'No resume file uploaded'})
     
-    resume_file = request.files['resumeFile']
+    if (request.method == "POST"):
+        resume_file = request.files['resumeFile']
     
     text_data = function.extract_text_from_pdf(resume_file)
+    skills = function.extract_skills(text_data)
+    experience = function.extract_experience(text_data)
 
-    print(text_data)
+    job_description = request.form.get('jobDescription','')
 
-    # job_description = request.form.get('jobDescription')
-    return jsonify({'success': 'Resume parsed successfully'})
+    return render_template('index.html', experience=experience, skills=skills, job_description=job_description)
 
 if __name__ == '__main__':
     app.run(debug=True)

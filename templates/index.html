@@ -15,22 +15,29 @@
         <div class="left-section">
             <h1>Drop Resume Here</h1>
 
-            <form id="resumeForm" method = post enctype="multipart/form-data" action="/parse">
+            <form id="resumeForm" method = "post" enctype="multipart/form-data" action="/parse">
                 <label for="resumeFile">Choose a Resume file:</label>
                 <input type="file" id="resumeFile" name="resumeFile" accept=".pdf, .doc, .docx">
                 <button type="submit">Parse Resume</button>
             </form>
-
-            <div id="parsedResult" style="display: none;">
-                <h2>Parsed Result</h2>
-                <pre id="resultText"></pre>
-            </div>
         </div>
 
-        <div class="right-section">
+        <div class="right-section" method = "post">
             <h2>Enter Job Description</h2>
             <textarea id="jobDescription" rows="8" placeholder="Enter job description here"></textarea>
         </div>
     </div>
+    
+    <div class="d-flex justify-content-center">
+        <div class="result-section">
+            {% if experience or skills or job_description  %}
+                <h1 style="color: #333;"><strong>Resume Parsing Results</strong></h1>
+                <p style="color: #555;"><strong>Experience:</strong> {{ experience }}</p>
+                <p style="color: #555;"><strong>Skills:</strong> {{ skills }}</p>
+                <p style="color: #555;"><strong>Job Description:</strong> {{ job_description }}</p>
+            {% endif %}
+        </div>
+    </div>
+    
 </body>
 </html>
