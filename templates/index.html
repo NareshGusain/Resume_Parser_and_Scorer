@@ -22,10 +22,11 @@
             </form>
         </div>
 
-        <div class="right-section" method = "post">
+        <form id="resumeForm" method="post" enctype="multipart/form-data" action="/parse">
             <h2>Enter Job Description</h2>
-            <textarea id="jobDescription" rows="8" placeholder="Enter job description here"></textarea>
-        </div>
+            <textarea id="jobDescription" name="jobDescription" rows="8" placeholder="Enter job description here"></textarea>
+
+        </form>
     </div>
     
     <div class="d-flex justify-content-center">

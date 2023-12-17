@@ -1,4 +1,9 @@
 import PyPDF2
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import string
 import re
 
 #Function to extract data from pdf 
@@ -49,3 +54,28 @@ def extract_skills(text_data):
     skills_match = skills_pattern.search(text_data)
     skills = skills_match.group(1).strip() if skills_match else None
     return skills
+
+
+# skills_tokenization
+def tokenization_and_removeStopWords(text:str):
+    text = word_tokenize(text)
+
+    # Remove punctuation
+    text = [word for word in text if word.isalnum()]
+
+    # Remove stop words
+    stop_words = set(stopwords.words('english'))
+    text = [word.lower() for word in text if word.lower() not in stop_words]
+
+    return text
+
+
+#to find similarity between given Job description and skills+experience
+def similarity_score(text1:str,text2:str):
+    list1_str = ' '.join(text1)
+    list2_str = ' '.join(text2)
+
+    vectorizer = CountVectorizer().fit_transform([list1_str, list2_str])
+    cosine_sim = cosine_similarity(vectorizer)
+
+    return cosine_sim[0][1]

@@ -25,6 +25,7 @@ def parse():
     experience = function.extract_experience(text_data)
 
     job_description = request.form.get('jobDescription','')
+    print(job_description)
 
     return render_template('index.html', experience=experience, skills=skills, job_description=job_description)
 
