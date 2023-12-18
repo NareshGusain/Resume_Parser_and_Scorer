@@ -19,15 +19,25 @@ def parse():
     
     if (request.method == "POST"):
         resume_file = request.files['resumeFile']
+
+    job_description = request.form.get('jobDescription','')
     
     text_data = function.extract_text_from_pdf(resume_file)
+
     skills = function.extract_skills(text_data)
     experience = function.extract_experience(text_data)
 
-    job_description = request.form.get('jobDescription','')
-    print(job_description)
+    #Preprocessing of skills and experience
+    skills_and_experience = str(skills) + str(" ") + str(experience)
 
-    return render_template('index.html', experience=experience, skills=skills, job_description=job_description)
+    skills_and_experience = function.tokenization_and_removeStopWords(skills_and_experience)
+    job_description = function.tokenization_and_removeStopWords(job_description)
+
+    #Calculate similarity between skills_and_experience vs job_description
+    sim_score = function.similarity_score(skills_and_experience,job_description) 
+
+
+    return render_template('index.html', experience=experience, skills=skills, job_description=job_description, sim_score=sim_score)
 
 if __name__ == '__main__':
     app.run(debug=True)
