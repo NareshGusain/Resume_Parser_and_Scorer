@@ -32,12 +32,13 @@
                 <p style="color: #555;"><strong>Experience:</strong> {{ experience }}</p>
                 <p style="color: #555;"><strong>Skills:</strong> {{ skills }}</p>
                 <p style="color: #555;"><strong>Job Description:</strong> {{ job_description }}</p>
-                <div>
-                    <p>Similarity Score:{{sim_score}}</p>
-                </div>
             {% endif %}
         </div>
-
+        <div>
+            {%if sim_score %}
+                <p>Similarity Score:{{sim_score}}</p>
+            {%endif%}
+        </div>
     </div>
     
 </body>
