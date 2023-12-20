@@ -2,6 +2,7 @@
 
 A web application that allows users to upload a resume and paste a job description to display the similarity score between the resume and job description. The project uses NLP, Flask, Bootstrap, and basic Python programming.
 
+![Alt text](https://github.com/NareshGusain/Resume_Ranking/blob/main/ScreenShots/Screenshot%202023-12-18%20105327.png)
 ## Table of Contents
 
 - [Introduction](#introduction)
