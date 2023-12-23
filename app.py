@@ -39,7 +39,6 @@ def parse():
 
     return render_template('index.html', experience=experience, skills=skills, job_description=job_description, sim_score=sim_score)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
 
 
