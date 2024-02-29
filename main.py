@@ -37,7 +37,7 @@ def parse():
     sim_score = function.similarity_score(skills_and_experience,job_description) 
 
 
-    return render_template('index.html', experience=experience, skills=skills, job_description=job_description, sim_score=sim_score)
+    return render_template('index.html', experience=experience, skills=skills, job_description=job_description, sim_score=float(sim_score))
 
 if __name__ == '__main__':
     app.run(debug=True)
